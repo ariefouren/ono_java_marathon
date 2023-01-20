@@ -14,7 +14,7 @@ public class FV {
 		System.out.printf("rate = %.2f\n", rate);
 		System.out.printf("nper = %d\n", nper);
 		
-		System.out.printf("after nper year(s) fv = %.2f",  fv);
+		System.out.printf("after %d year(s) fv = %.2f", nper, fv);
 		
 		
 		
