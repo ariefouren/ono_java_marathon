@@ -23,6 +23,24 @@ public class Order {
 			System.out.printf("prices[%d] = %.2f \n" , i, prices[i]);
 		}
 		
+		// computation
+		/*
+		 * Number of items:      5 V
+Total price:        258.64
+Min price:           10.99
+Max price:           10.99
+Average price:       51.73
+
+		 */
+		double totalPrice = 0;
+		for(int i = 0; i < numItems; i++)
+		{
+			totalPrice += prices[i];
+		}
+		
+		System.out.printf("Number of items :   %d\n", numItems);
+		System.out.printf("Total price     :   %.2f\n", totalPrice);
+		
 		
 
 	}
