@@ -12,12 +12,9 @@ public class WhileLoop {
 		while(fv < 2000)
 		{
 			fv = fv * (1 + rate); 
-			nper ++;
+			nper++;
 			System.out.printf("nper = %d, fv = %.2f\n", nper, fv);
 		}
-		
-		
-		
 
 	}
 
