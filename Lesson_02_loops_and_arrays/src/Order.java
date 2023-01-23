@@ -20,7 +20,7 @@ public class Order {
 		// output
 		for(int i = 0; i < numItems; i++)
 		{
-			System.out.printf("prices[%d] = %.2f \n" , i, prices[i]);
+			System.out.printf("prices[%10d] = %10.2f \n" , i, prices[i]);
 		}
 		
 		// computation
