@@ -29,19 +29,49 @@ Please enter the number of years : 2
 		 */
 		double pmt = (pv * rate)/((1-Math.pow(1+rate,-nper) ) );
 		
-		// output
-		System.out.printf("Monthly payment : %.2f\n", pmt);
-		double balance = pv;
-		System.out.printf("%10d | %10.2f \n", 0, balance);
+		// נחשב את היתרות של המשכנתא ונשמור אותן במערך
+		double[] balance =  new double[nper + 1];
+		// מערך ששומר את התשלום על חשבון הריבית בכל חודש
+		double[] interestPayment = new double[nper + 1];
+		// מערך ששומר את התשלום החחודשי על חשבון הקרן
+		double[] principialPayment = new double[nper + 1];
+				
+		// כל כניסה של המערך משקפת את היתרה בסוף החודש
+		balance[0] = pv;
 		
+		// נחשב את היתרות בכל החודשים של המשכנתא ונשמור את התוצאות במערך
 		for(int i = 1; i <= nper; i++)
 		{
-			balance = balance * (1 + rate) - pmt;
-			System.out.printf("%10d | %10.2f \n", i, balance);
+			balance[i] = balance[i-1] * (1 + rate) - pmt;	
+			interestPayment[i] = balance[i-1] * rate;
+			principialPayment[i] = pmt - interestPayment[i];
 		}
 		
-		System.out.printf("Total amount paid    : %.2f\n", pmt*nper);
-		System.out.printf("Total interest paid  : %.2f\n", pmt*nper - pv);
+		// נחשב את הסכום של התשלומיםפ על חשבון ריבית ועל חשבון קרן
+		double totalInterestPaid = 0;
+		double totalPrincipialPaid = 0;
+		for(int i = 1; i <= nper; i++)
+		{
+			totalInterestPaid += interestPayment[i]; 
+			totalPrincipialPaid += principialPayment[i];
+		}
+		
+		// output
+		System.out.printf("Monthly payment : %.2f\n", pmt);
+		
+		System.out.printf("Mortgage repayments schedule :\n", pmt);
+		for(int i = 0; i <= nper; i++)
+		{
+			System.out.printf("%10d | %10.2f | %10.2f | %10.2f\n", 
+					i, 
+					balance[i], 
+					interestPayment[i],
+					principialPayment[i]);
+		}
+		
+		System.out.printf("Total amount paid      : %.2f\n", pmt*nper);
+		System.out.printf("Total interest paid    : %.2f\n", totalInterestPaid);
+		System.out.printf("Total principial paid  : %.2f\n", totalPrincipialPaid);
 		
 
 	}
