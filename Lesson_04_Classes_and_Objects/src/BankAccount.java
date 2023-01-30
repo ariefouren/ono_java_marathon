@@ -22,6 +22,24 @@ public class BankAccount {
 		balance = balance + amount;
 	}
 	
+	public void withdraw(double amount)
+	{
+		balance = balance - amount;
+	}
+	
+	
+	public double getBalance() {
+		return balance;
+	}
+
+	public int getAccountNumber() {
+		return accountNumber;
+	}
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
 	@Override
 	public String toString() {
 		return String.format("BankAccount [balance=%s, accountNumber=%s, customerName=%s]", 
