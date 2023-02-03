@@ -8,7 +8,7 @@ public class Item {
 		this.price = price;
 	}
 	
-	public void giveDiscount(double discountRate)
+	public void giveDiscount(double discountRate)  // 25% = 0.25
 	{
 		price = price*(1 - discountRate); 
 	}
